@@ -1,0 +1,45 @@
+{
+  "name": "seven-desktop",
+  "version": "1.0.0",
+  "description": "تطبيق سطح المكتب لنظام SEVEN لإدارة مقاهي الألعاب",
+  "main": "main.js",
+  "author": "SEVEN",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build:icons": "electron-icon-builder --input=./build/icon.png --output=build --flatten",
+    "dist": "npm run build:icons && electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
+    "electron-icon-builder": "^2.0.1"
+  },
+  "build": {
+    "appId": "com.seven.desktop",
+    "productName": "SEVEN",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icons/win/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icons/mac/icon.icns",
+      "category": "public.app-category.business"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
